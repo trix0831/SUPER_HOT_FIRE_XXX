@@ -178,3 +178,4 @@ print(maze.getActions(nodes))
 
 
 
+#hahahaha

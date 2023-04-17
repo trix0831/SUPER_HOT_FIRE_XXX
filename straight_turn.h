@@ -137,6 +137,9 @@ void motorWriting(int vL, int vR){
   if(vL > 0){
     digitalWrite(BIN1, HIGH);
     digitalWrite(BIN2, LOW);
+  }else if (vL == 0){
+    digitalWrite(BIN1, LOW);
+    digitalWrite(BIN2, LOW);    
   }
   else{
     digitalWrite(BIN1, LOW);
@@ -146,6 +149,9 @@ void motorWriting(int vL, int vR){
   if(vR > 0){
     digitalWrite(AIN1, HIGH);
     digitalWrite(AIN2, LOW);
+  }else if (vR == 0){
+    digitalWrite(AIN1, LOW);
+    digitalWrite(AIN2, LOW);    
   }
   else{
     digitalWrite(AIN1, LOW);

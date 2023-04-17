@@ -83,27 +83,27 @@ void loop() {
 
   rfid(testid);
 
-  straight();
+  // straight();
 
-  if (checkState() == 11111){//1 is black, 2 is white
-    if(stage % 2 == 0){ // U turn 
-      UTurn();
-    }
+  // if (checkState() == 11111){//1 is black, 2 is white
+  //   if(stage % 2 == 0){ // U turn 
+  //     UTurn();
+  //   }
 
-    if(stage % 6 == 1){ // right turn
-      RightTurn();
-    }
+  //   if(stage % 6 == 1){ // right turn
+  //     RightTurn();
+  //   }
 
-    if(stage%6 == 3){ // middle Node -> go straight
-      while (checkState() == 11111){//1 is black, 2 is white
-        motorWriting(speed, speed);
-      }
-    }
+  //   if(stage%6 == 3){ // middle Node -> go straight
+  //     while (checkState() == 11111){//1 is black, 2 is white
+  //       motorWriting(speed, speed);
+  //     }
+  //   }
 
-    if(stage%6 == 5){ // left turn
-      LeftTurn();
-    }
-  }
+  //   if(stage%6 == 5){ // left turn
+  //     LeftTurn();
+  //   }
+  // }
 
 }
 

@@ -90,8 +90,8 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
   }
   else if(digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH){
     if (*lastState == 2){
-      *stage++;
-      *lastState = 1;
+      (*stage)++;
+      (*lastState) = 1;
     }
     return 11111;
     
@@ -129,7 +129,7 @@ void straight(int* stage, int* lastState){
   }
   else if(checkState(stage, lastState) == 22221){
     motorWriting(speed,-speed);
-  }else if (checkState(stage, lastState) == 22222 || checkState(stage, lastState) == 11111){
+  }else if (checkState(stage, lastState) == 22222){
     motorWriting(0,0);
   }
 }

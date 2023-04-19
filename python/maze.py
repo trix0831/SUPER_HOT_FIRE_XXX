@@ -170,7 +170,7 @@ class Maze:
     def strategy_2(self, nd_from, nd_to):
         return self.BFS_2(nd_from, nd_to)
 
-maze = Maze("maze (3).csv")
+maze = Maze("python/data/small_maze.csv")
 start = int(input("Start node:"))
 end = int(input("End node:"))
 nodes = maze.BFS_2(maze.nd_dict[start],maze.nd_dict[end])

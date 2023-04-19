@@ -9,11 +9,13 @@ import sys
 import os
 
 def main():
-    maze = mz.Maze("data/small_maze.csv")
-    point = Scoreboard("your team name", "ask TA for ip")
-    # point = ScoreboardFake("your team name", "data/fakeUID.csv")
+    maze = mz.Maze("python/data/small_maze.csv")
+    # point = Scoreboard("HOT_FIRE", "http://localhost:3000")
+    point = ScoreboardFake("HOT_FIRE", "python/data/fakeUID.csv")
     interf = BTinterface()
     # TODO : Initialize necessary variables
+    interf.start()
+    
 
     if (sys.argv[1] == '0'):
         print("Mode 0: for treasure-hunting")

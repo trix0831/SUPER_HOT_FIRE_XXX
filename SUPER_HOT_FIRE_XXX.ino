@@ -16,13 +16,14 @@
 #define BIN2 6
 #define PWMB 12
 
-#define speed 128
+#define speed 255
 
 char val;
 char val2;
 byte testid;
 int stage = 0;
 int lastState;
+int started = 0;
 
 void motorWriting(int, int);
 
@@ -55,7 +56,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
   analogWrite(PWMA, speed);
   analogWrite(PWMB, speed);
 
@@ -71,6 +71,10 @@ void loop() {
     val2 = Serial1.read();
     Serial.println(val2);
 
+  while(val2 != 'w' && started == 0){
+    motorWriting(0,0);
+    started = 1;
+  }
 
     if(val2 == 'w'){
       motorWriting(speed, speed);
@@ -81,11 +85,13 @@ void loop() {
     }else if(val2 == 'd'){
       motorWriting(speed, 0);
     }else if(val2 == 'p'){
-      motorWriting(0,0);
+      while(Serial1.read() != 'w'){
+        motorWriting(0,0);
+      }
     }
   }
 
-  // rfid(testid);
+  rfid(testid);
 
   straight(&stage, &lastState);
 

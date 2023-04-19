@@ -14,7 +14,7 @@
 #define IR4 38
 #define IR5 40
 
-#define speed 140
+#define speed 255
 
 
 
@@ -26,27 +26,28 @@ int checkState(int *, int *);
 void motorWriting(int, int);
 
 void UTurn(int *stage, int *lastState){
-  while (!(checkState(stage, lastState) == 22221)){//1 is black, 2 is white
-        motorWriting(speed, -speed);
-    }
+  motorWriting(speed, -speed);
+  delay(600);
+  motorWriting(speed, speed);
+  delay(150);
 }
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(375);
+  delay(60);
   motorWriting(speed, 0);
-  delay(1075);
+  delay(800);
   motorWriting(speed, speed);
-  delay(300);
+  delay(120);
 }
 
 void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(375);
+  delay(60);
   motorWriting(0, speed);
-  delay(1075);
+  delay(800);
   motorWriting(speed, speed);
-  delay(300);
+  delay(120);
 }
 
 int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means black, 2 means white

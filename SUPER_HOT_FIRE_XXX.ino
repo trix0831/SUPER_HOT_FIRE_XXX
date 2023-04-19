@@ -24,6 +24,7 @@ byte testid;
 int stage = 0;
 int lastState;
 int started = 0;
+int teststage = 0;
 
 void motorWriting(int, int);
 
@@ -72,18 +73,18 @@ void loop() {
     Serial.println(val2);
   }
 
-  // while(started == 0){
-  //   motorWriting(0,0);
-  //   if (Serial1.available()) {
-  //     val2 = Serial1.read();
-  //     Serial.println(val2);
-  //   }
-  //   if (val2 == 'w'){
-  //     break;
-  //   }
-  // }
+  while(started == 0){
+    motorWriting(0,0);
+    if (Serial1.available()) {
+      val2 = Serial1.read();
+      Serial.println(val2);
+    }
+    if (val2 == 'w'){
+      break;
+    }
+  }
 
-  // started = 1;
+  started = 1;
 
   // if(val2 == 'w'){
   //   motorWriting(speed, speed);
@@ -95,11 +96,11 @@ void loop() {
   //   motorWriting(speed, 0);
   // }else 
 
-  // if(val2 == 'p'){
-  //   while(Serial1.read() != 'w'){
-  //     motorWriting(0,0);
-  //   }
-  // }
+  if(val2 == 'p'){
+    while(Serial1.read() != 'w'){
+      motorWriting(0,0);
+    }
+  }
 
 
   rfid(testid);
@@ -109,6 +110,8 @@ void loop() {
   if (checkState(&stage,&lastState) == 11111){//1 is black, 2 is white
     if(stage % 2 == 0){ // U turn 
       UTurn(&stage, &lastState);
+      teststage ++ ;
+      Serial.println(teststage);
     }
 
     if(stage % 6 == 1){ // right turn

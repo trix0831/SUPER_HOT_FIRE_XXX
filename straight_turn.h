@@ -103,10 +103,10 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
 
 void straight(int* stage, int* lastState){
   if(checkState(stage, lastState) == 12222){
-    motorWriting(-speed,speed);
+    motorWriting(-speed/2,speed);
   }
   else if(checkState(stage, lastState) == 11222){
-    motorWriting(-speed/3,speed);
+    motorWriting(-speed/5,speed);
   }
   else if(checkState(stage, lastState) == 21222){
     motorWriting(0,speed);
@@ -124,10 +124,10 @@ void straight(int* stage, int* lastState){
     motorWriting(speed,0);
   }
   else if(checkState(stage, lastState) == 22211){
-    motorWriting(speed,-speed/2);
+    motorWriting(speed,-speed/5);
   }
   else if(checkState(stage, lastState) == 22221){
-    motorWriting(speed,-speed);
+    motorWriting(speed,-speed/2);
   }//else if (checkState(stage, lastState) == 22222){
   //   motorWriting(0,0);
   // }

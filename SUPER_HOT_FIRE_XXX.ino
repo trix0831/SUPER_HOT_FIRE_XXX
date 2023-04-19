@@ -19,7 +19,7 @@
 #define speed 255
 
 char val;
-char val2;
+char val2 = 'o';
 byte testid;
 int stage = 0;
 int lastState;
@@ -70,26 +70,37 @@ void loop() {
   if (Serial1.available()) {
     val2 = Serial1.read();
     Serial.println(val2);
-
-  while(val2 != 'w' && started == 0){
-    motorWriting(0,0);
-    started = 1;
   }
 
-    if(val2 == 'w'){
-      motorWriting(speed, speed);
-    }else if(val2 == 's'){
-      motorWriting(-speed, -speed);
-    }else if(val2 == 'a'){
-      motorWriting(0, speed);
-    }else if(val2 == 'd'){
-      motorWriting(speed, 0);
-    }else if(val2 == 'p'){
-      while(Serial1.read() != 'w'){
-        motorWriting(0,0);
-      }
-    }
-  }
+  // while(started == 0){
+  //   motorWriting(0,0);
+  //   if (Serial1.available()) {
+  //     val2 = Serial1.read();
+  //     Serial.println(val2);
+  //   }
+  //   if (val2 == 'w'){
+  //     break;
+  //   }
+  // }
+
+  // started = 1;
+
+  // if(val2 == 'w'){
+  //   motorWriting(speed, speed);
+  // }else if(val2 == 's'){
+  //   motorWriting(-speed, -speed);
+  // }else if(val2 == 'a'){
+  //   motorWriting(0, speed);
+  // }else if(val2 == 'd'){
+  //   motorWriting(speed, 0);
+  // }else 
+
+  // if(val2 == 'p'){
+  //   while(Serial1.read() != 'w'){
+  //     motorWriting(0,0);
+  //   }
+  // }
+
 
   rfid(testid);
 

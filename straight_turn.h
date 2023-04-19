@@ -33,20 +33,18 @@ void UTurn(int *stage, int *lastState){
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(200);
-  while (!(checkState(stage, lastState) == 12222)){//1 is black, 2 is white
-    motorWriting(speed, 0);
-  }
+  delay(375);
+  motorWriting(speed, 0);
+  delay(1075);
   motorWriting(speed, speed);
   delay(300);
 }
 
 void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(200);
-  while (!(checkState(stage, lastState) == 22221)){//1 is black, 2 is white
-    motorWriting(0, speed);
-  }
+  delay(375);
+  motorWriting(0, speed);
+  delay(1075);
   motorWriting(speed, speed);
   delay(300);
 }
@@ -129,9 +127,9 @@ void straight(int* stage, int* lastState){
   }
   else if(checkState(stage, lastState) == 22221){
     motorWriting(speed,-speed);
-  }else if (checkState(stage, lastState) == 22222){
-    motorWriting(0,0);
-  }
+  }//else if (checkState(stage, lastState) == 22222){
+  //   motorWriting(0,0);
+  // }
 }
 
 void motorWriting(int vL, int vR){

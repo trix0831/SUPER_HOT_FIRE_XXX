@@ -16,7 +16,7 @@
 
 #define speed 140
 
-int lastState;
+
 
 void UTurn();
 void RightTurn();
@@ -51,7 +51,7 @@ void LeftTurn(){
   delay(300);
 }
 
-int checkState(int& stage){ //checking the states of IR, 1 means black, 2 means white
+int checkState(int& stage, int& lastState){ //checking the states of IR, 1 means black, 2 means white
   if (digitalRead(IR1) == HIGH && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
     lastState = 2; // not all black
     return 12222;    

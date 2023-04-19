@@ -22,6 +22,7 @@ char val;
 char val2;
 byte testid;
 int stage = 0;
+int lastState;
 
 void motorWriting(int, int);
 

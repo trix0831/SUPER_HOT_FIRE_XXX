@@ -1,0 +1,6 @@
+{
+    "configuration": "cpu=atmega2560",
+    "board": "arduino:avr:mega",
+    "sketch": "SUPER_HOT_FIRE_XXX.ino",
+    "port": "COM8"
+}

@@ -177,4 +177,3 @@ nodes = maze.BFS_2(maze.nd_dict[start],maze.nd_dict[end])
 print(maze.getActions(nodes))
 
 
-

@@ -129,6 +129,8 @@ void straight(int* stage, int* lastState){
   }
   else if(checkState(stage, lastState) == 22221){
     motorWriting(speed,-speed);
+  }else if (checkState(stage, lastState) == 22222 || checkState(stage, lastState) == 11111){
+    motorWriting(0,0);
   }
 }
 

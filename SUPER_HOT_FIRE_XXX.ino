@@ -21,6 +21,7 @@
 char val;
 char val2;
 byte testid;
+int stage = 0;
 
 void motorWriting(int, int);
 
@@ -88,7 +89,7 @@ void loop() {
 
   straight();
 
-  if (checkState() == 11111){//1 is black, 2 is white
+  if (checkState(stage) == 11111){//1 is black, 2 is white
     if(stage % 2 == 0){ // U turn 
       UTurn();
     }
@@ -98,7 +99,7 @@ void loop() {
     }
 
     if(stage%6 == 3){ // middle Node -> go straight
-      while (checkState() == 11111){//1 is black, 2 is white
+      while (checkState(stage) == 11111){//1 is black, 2 is white
         motorWriting(speed, speed);
       }
     }

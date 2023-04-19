@@ -59,8 +59,7 @@ void loop() {
   analogWrite(PWMA, speed);
   analogWrite(PWMB, speed);
 
-  Serial1.println(stage);
-  Serial.println(stage);
+
 
   if (Serial.available()) {
     val = Serial.read();
@@ -86,7 +85,7 @@ void loop() {
     }
   }
 
-  rfid(testid);
+  // rfid(testid);
 
   straight(&stage, &lastState);
 
@@ -96,6 +95,8 @@ void loop() {
     }
 
     if(stage % 6 == 1){ // right turn
+      Serial1.println(stage);
+      Serial.println(stage);
       RightTurn(&stage, &lastState);
     }
 

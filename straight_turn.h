@@ -22,76 +22,76 @@ void UTurn();
 void RightTurn();
 void LeftTurn();
 void straight();
-int checkState();
+int checkState(int *, int *);
 void motorWriting(int, int);
 
-void UTurn(){
-  while (!(checkState() == 22221)){//1 is black, 2 is white
+void UTurn(int *stage, int *lastState){
+  while (!(checkState(stage, lastState) == 22221)){//1 is black, 2 is white
         motorWriting(speed, -speed);
     }
 }
 
-void RightTurn(){
+void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
   delay(200);
-  while (!(checkState() == 12222)){//1 is black, 2 is white
+  while (!(checkState(stage, lastState) == 12222)){//1 is black, 2 is white
     motorWriting(speed, 0);
   }
   motorWriting(speed, speed);
   delay(300);
 }
 
-void LeftTurn(){
+void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
   delay(200);
-  while (!(checkState() == 22221)){//1 is black, 2 is white
+  while (!(checkState(stage, lastState) == 22221)){//1 is black, 2 is white
     motorWriting(0, speed);
   }
   motorWriting(speed, speed);
   delay(300);
 }
 
-int checkState(int& stage, int& lastState){ //checking the states of IR, 1 means black, 2 means white
+int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means black, 2 means white
   if (digitalRead(IR1) == HIGH && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 12222;    
   }
   else if(digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 11222;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == HIGH && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 21222;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 21122;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == HIGH && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 22122;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 22112;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == HIGH && digitalRead(IR5) == LOW){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 22212;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 22211;
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == HIGH){
-    lastState = 2; // not all black
+    *lastState = 2; // not all black
     return 22221;
   }
   else if(digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH){
-    if (lastState == 2){
-      stage++;
-      lastState = 1;
+    if (*lastState == 2){
+      *stage++;
+      *lastState = 1;
     }
     return 11111;
     
@@ -102,32 +102,32 @@ int checkState(int& stage, int& lastState){ //checking the states of IR, 1 means
 
 }
 
-void straight(){
-  if(checkState() == 12222){
+void straight(int* stage, int* lastState){
+  if(checkState(stage, lastState) == 12222){
     motorWriting(-speed,speed);
   }
-  else if(checkState() == 11222){
+  else if(checkState(stage, lastState) == 11222){
     motorWriting(-speed/3,speed);
   }
-  else if(checkState() == 21222){
+  else if(checkState(stage, lastState) == 21222){
     motorWriting(0,speed);
   }
-  else if(checkState() == 21122){
+  else if(checkState(stage, lastState) == 21122){
     motorWriting(speed/2,speed);
   }
-  else if(checkState() == 22122){
+  else if(checkState(stage, lastState) == 22122){
     motorWriting(speed,speed);
   }
-  else if(checkState() == 22112){
+  else if(checkState(stage, lastState) == 22112){
     motorWriting(speed,speed/2);
   }
-  else if(checkState() == 22212){
+  else if(checkState(stage, lastState) == 22212){
     motorWriting(speed,0);
   }
-  else if(checkState() == 22211){
+  else if(checkState(stage, lastState) == 22211){
     motorWriting(speed,-speed/2);
   }
-  else if(checkState() == 22221){
+  else if(checkState(stage, lastState) == 22221){
     motorWriting(speed,-speed);
   }
 }

@@ -88,25 +88,25 @@ void loop() {
 
   rfid(testid);
 
-  straight();
+  straight(&stage, &lastState);
 
-  if (checkState(stage) == 11111){//1 is black, 2 is white
+  if (checkState(&stage,&lastState) == 11111){//1 is black, 2 is white
     if(stage % 2 == 0){ // U turn 
-      UTurn();
+      UTurn(&stage, &lastState);
     }
 
     if(stage % 6 == 1){ // right turn
-      RightTurn();
+      RightTurn(&stage, &lastState);
     }
 
     if(stage%6 == 3){ // middle Node -> go straight
-      while (checkState(stage) == 11111){//1 is black, 2 is white
+      while (checkState(&stage, &lastState) == 11111){//1 is black, 2 is white
         motorWriting(speed, speed);
       }
     }
 
     if(stage%6 == 5){ // left turn
-      LeftTurn();
+      LeftTurn(&stage, &lastState);
     }
   }
 

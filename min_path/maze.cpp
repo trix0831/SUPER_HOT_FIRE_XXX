@@ -20,7 +20,6 @@ int distances[maxNode][maxNode];
 int directions[maxNode][maxNode];
 int graph[maxNode][5];
 int IDS[maxID];
-queue<int> q;
 //
 
 void readFile(){
@@ -55,12 +54,18 @@ void printCSV(){
 	{
 		for(int j=0;j<content[i].size();j++)
 		{
-            if (content[i][j] != ""){
-                cout<<content[i][j]<<" ";
-            }
-			
+            cout << content[i][j] << ".";
 		}
 		cout<<"\n";
+	}
+}
+
+void printGraph(){
+	for (int i = 1; i<maxNode; ++i){
+		for (int j = 1; j<5; ++j){
+			cout << graph[i][j] << " ";
+		}
+		cout << endl;
 	}
 }
 
@@ -102,6 +107,7 @@ void bfs(int node1, int node2){
 	q.push(node1);
 	int cur = node1;
 	while (cur != node2){
+		cout << "ha";
 		cur = q.front();
 		for (int i = 1; i<5; ++i){
 			if (graph[cur][i] != -1){
@@ -114,6 +120,7 @@ void bfs(int node1, int node2){
 	int lastDir = directions[pred[cur]][cur];
 	cur = pred[cur];
 	while (cur != node1){
+		cout << "fuck";
 		distances[node1][node2] ++;
 		int dir = directions[pred[cur]][cur];
 		int margin =  dir-lastDir;
@@ -142,6 +149,10 @@ int main()
 	// 		bfs(IDS[i], IDS[j]);
 	// 	}
 	// }
+	printCSV();
+	cout << "\n";
+	printGraph();
+	return 0;
 	int start,end;
 	cout << "start: ";
 	cin >> start;

@@ -4,6 +4,7 @@
 #include <string.h>
 #include "straight_turn.h"
 
+#define maxn 1000
 #define RST_PIN 9
 #define SS_PIN 53
 
@@ -25,6 +26,8 @@ int stage = 0;
 int lastState;
 int started = 0;
 int teststage = 0;
+
+char orders[maxn];
 
 void motorWriting(int, int);
 

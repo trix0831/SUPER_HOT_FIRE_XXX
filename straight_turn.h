@@ -57,7 +57,7 @@ void LeftTurn(int *stage, int *lastState){
 
 void Forward(int *stage, int *lastState){
   while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
-    motorWriting(speed, speed);
+    motorWriting(speed*7/8, speed);
   }
 }
 

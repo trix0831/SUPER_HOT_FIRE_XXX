@@ -27,7 +27,7 @@ int lastState;
 int started = 0;
 int teststage = 0;
 
-char orders[maxn]={'f','r','r','b','r','r','s'};
+char orders[maxn]={'f','r','f','r','s'};
 
 void motorWriting(int, int);
 
@@ -63,7 +63,9 @@ void loop() {
   analogWrite(PWMA, speed);
   analogWrite(PWMB, speed);
 
-
+  // while(true){
+  //   motorWriting(speed*7/8,speed);
+  // }
 
   if (Serial.available()) {
     val = Serial.read();

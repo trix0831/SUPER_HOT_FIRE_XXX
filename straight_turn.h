@@ -27,7 +27,9 @@ void motorWriting(int, int);
 
 void UTurn(int *stage, int *lastState){
   motorWriting(speed, -speed);
-  delay(500);
+  delay(620);
+  motorWriting(speed,speed);
+  delay(100);
   // motorWriting(speed, speed);
   // delay(150);
   // while (!(checkState(stage, lastState) == 22122)){
@@ -37,7 +39,7 @@ void UTurn(int *stage, int *lastState){
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(40);
+  delay(50);
   motorWriting(speed, 0);
   delay(650);
   // motorWriting(speed, speed);
@@ -46,11 +48,17 @@ void RightTurn(int *stage, int *lastState){
 
 void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(40);
+  delay(50);
   motorWriting(0, speed);
   delay(650);
   // motorWriting(speed, speed);
   // delay(120);
+}
+
+void Forward(int *stage, int *lastState){
+  while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
+    motorWriting(speed, speed);
+  }
 }
 
 int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means black, 2 means white

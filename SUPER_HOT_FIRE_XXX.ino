@@ -27,7 +27,7 @@ int lastState;
 int started = 0;
 int teststage = 0;
 
-char orders[maxn];
+char orders[maxn]={'f','r','r','b','r','r','s'};
 
 void motorWriting(int, int);
 
@@ -76,18 +76,18 @@ void loop() {
     Serial.println(val2);
   }
 
-  while(started == 0){
-    motorWriting(0,0);
-    if (Serial1.available()) {
-      val2 = Serial1.read();
-      Serial.println(val2);
-    }
-    if (val2 == 'w'){
-      break;
-    }
-  }
+  // while(started == 0){
+  //   motorWriting(0,0);
+  //   if (Serial1.available()) {
+  //     val2 = Serial1.read();
+  //     Serial.println(val2);
+  //   }
+  //   if (val2 == 'w'){
+  //     break;
+  //   }
+  // }
 
-  started = 1;
+  started = 0;
 
   // if(val2 == 'w'){
   //   motorWriting(speed, speed);
@@ -99,38 +99,30 @@ void loop() {
   //   motorWriting(speed, 0);
   // }else 
 
-  if(val2 == 'p'){
-    while(Serial1.read() != 'w'){
-      motorWriting(0,0);
-    }
-  }
+  // if(val2 == 'p'){
+  //   while(Serial1.read() != 'w'){
+  //     motorWriting(0,0);
+  //   }
+  // }
 
-
+  Serial1.println("I'm here");
   rfid(testid);
 
   straight(&stage, &lastState);
-
-  if (checkState(&stage,&lastState) == 11111){//1 is black, 2 is white
-    if(stage % 2 == 0){ // U turn 
-      UTurn(&stage, &lastState);
-      teststage ++ ;
-      Serial.println(teststage);
-    }
-
-    if(stage % 6 == 1){ // right turn
-      Serial1.println(stage);
-      Serial.println(stage);
-      RightTurn(&stage, &lastState);
-    }
-
-    if(stage%6 == 3){ // middle Node -> go straight
-      while (checkState(&stage, &lastState) == 11111){//1 is black, 2 is white
-        motorWriting(speed, speed);
-      }
-    }
-
-    if(stage%6 == 5){ // left turn
+  // Serial1.println(checkState(&stage, &lastState));
+  if (checkState(&stage,&lastState) == 11111){
+    if (orders[stage] == 'f'){
+      Forward(&stage, &lastState);
+    }else if (orders[stage] == 'l'){
       LeftTurn(&stage, &lastState);
+    }else if (orders[stage] == 'r'){
+      RightTurn(&stage, &lastState);
+    }else if (orders[stage] == 'b'){
+      UTurn(&stage, &lastState);
+    }else{
+      while(true){
+        motorWriting(0,0);
+      }
     }
   }
 

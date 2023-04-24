@@ -46,9 +46,11 @@ def main():
     # # TODO : Initialize necessary variables
     interf.start()
     
-    while True:
-        if interf.get_UID():
-            gameboard.add_UID(hexTOstr(interf.get_UID()))
+    # while True:
+    if interf.get_UID():
+        # print(hexTOstr(interf.get_UID()))
+        gameboard.add_UID("50335F7E")
+        hexTOstr(interf.get_UID())
 
     
     

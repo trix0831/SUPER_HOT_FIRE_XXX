@@ -33,4 +33,7 @@ class BTinterface:
 if __name__ == '__main__':
     test = BTinterface()
     test.start()
+    while True:
+        print(test.get_UID())
+    
     test.end_process()

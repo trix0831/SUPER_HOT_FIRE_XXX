@@ -14,7 +14,7 @@
 #define IR4 38
 #define IR5 40
 
-#define speed 255
+#define speed 250
 
 
 
@@ -39,7 +39,7 @@ void UTurn(int *stage, int *lastState){
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(50);
+  delay(60);
   motorWriting(speed, 0);
   delay(650);
   // motorWriting(speed, speed);
@@ -48,7 +48,7 @@ void RightTurn(int *stage, int *lastState){
 
 void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(50);
+  delay(60);
   motorWriting(0, speed);
   delay(650);
   // motorWriting(speed, speed);
@@ -57,7 +57,7 @@ void LeftTurn(int *stage, int *lastState){
 
 void Forward(int *stage, int *lastState){
   while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
-    motorWriting(speed*7/8, speed);
+    motorWriting(speed, speed);
   }
 }
 

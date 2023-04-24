@@ -17,7 +17,7 @@
 #define BIN2 6
 #define PWMB 12
 
-#define speed 255
+#define speed 250
 
 char val;
 char val2 = 'o';
@@ -27,7 +27,7 @@ int lastState;
 int started = 0;
 int teststage = 0;
 
-char orders[maxn]={'f','r','f','r','s'};
+char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};
 
 void motorWriting(int, int);
 
@@ -64,7 +64,7 @@ void loop() {
   analogWrite(PWMB, speed);
 
   // while(true){
-  //   motorWriting(speed*7/8,speed);
+  //   motorWriting(speed,speed);
   // }
 
   if (Serial.available()) {
@@ -112,22 +112,46 @@ void loop() {
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));
+
+  // run map
+  // if (checkState(&stage,&lastState) == 11111){
+  //   if (orders[stage] == 'f'){
+  //     Forward(&stage, &lastState);
+  //   }else if (orders[stage] == 'l'){
+  //     LeftTurn(&stage, &lastState);
+  //   }else if (orders[stage] == 'r'){
+  //     RightTurn(&stage, &lastState);
+  //   }else if (orders[stage] == 'b'){
+  //     UTurn(&stage, &lastState);
+  //   }else{
+  //     while(true){
+  //       motorWriting(0,0);
+  //     }
+  //   }
+  // }
+
+  // run cross
   if (checkState(&stage,&lastState) == 11111){
-    if (orders[stage] == 'f'){
-      Forward(&stage, &lastState);
-    }else if (orders[stage] == 'l'){
-      LeftTurn(&stage, &lastState);
-    }else if (orders[stage] == 'r'){
-      RightTurn(&stage, &lastState);
-    }else if (orders[stage] == 'b'){
+    if (stage % 2 == 0){
       UTurn(&stage, &lastState);
+    }else if (stage % 6 == 1){
+      RightTurn(&stage, &lastState);
+    }else if (stage % 6 == 5){
+      LeftTurn(&stage, &lastState);
     }else{
-      while(true){
-        motorWriting(0,0);
-      }
+      Forward(&stage, &lastState);
     }
   }
 
 }
+
+/*
+1		2		
+2	1		3	
+3	4		5	2
+4		3		
+5	6			3 
+6		5		
+*/
 
 

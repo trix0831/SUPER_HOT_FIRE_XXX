@@ -176,12 +176,15 @@ class Socket(socketio.ClientNamespace):
 if __name__ == '__main__':
     import time
     try:
-        myScoreboard = Scoreboard("TeamName2","http://localhost:3000")
-        # myScoreboard = ScoreboardFake("TeamName","data/fakeUID.csv")
-        time.sleep(6)
+        myScoreboard = Scoreboard("HOT_FIRE_XXX","http://140.112.175.18:3000")
+        # myScoreboard = ScoreboardFake("HOT_FIRE_XXX","python/data/fakeUID.csv")
+        time.sleep(3)
         myScoreboard.add_UID("61C9931C")
         myScoreboard.add_UID("D1874019")
         myScoreboard.add_UID("12346578")
         print("score:",myScoreboard.getCurrentScore())
+        myScoreboard.add_UID("0596E4D0")
+        
+        
     except KeyboardInterrupt:
         sys.exit(1)

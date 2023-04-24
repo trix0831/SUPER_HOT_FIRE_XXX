@@ -33,7 +33,10 @@ class BTinterface:
 if __name__ == '__main__':
     test = BTinterface()
     test.start()
+    # while True:
+    #     print(test.get_UID())
     while True:
-        print(test.get_UID())
+        if test.ser.waiting():
+            print(test.ser.SerialReadString())
     
     test.end_process()

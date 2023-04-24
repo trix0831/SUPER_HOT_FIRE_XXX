@@ -108,7 +108,11 @@ void loop() {
   // }
 
   Serial1.println("I'm here");
-  rfid(testid);
+  while (true){
+    motorWriting(0,0);
+    rfid(testid);
+  }
+
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));

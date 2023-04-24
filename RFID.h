@@ -17,6 +17,8 @@
 MFRC522 *mfrc522;
 
 byte* rfid(byte& idSize) {
+    int tmp = 0;
+
     // 確認是否有新卡片
     if (mfrc522->PICC_IsNewCardPresent() && mfrc522->PICC_ReadCardSerial()) {
       byte *id = mfrc522->uid.uidByte;   // 取得卡片的UID
@@ -29,7 +31,6 @@ byte* rfid(byte& idSize) {
       // #ifdef DEBUG
       // Serial1.print("UID Size: ");       // 顯示卡片的UID長度值
       // Serial1.println(idSize);   
-      Serial1.print("id:");
       for (byte i = 0; i < idSize; i++) {  // 逐一顯示UID碼
         
         // Serial1.print(i);
@@ -40,7 +41,7 @@ byte* rfid(byte& idSize) {
         }
 
         Serial1.print(id[i], HEX);       // 以16進位顯示UID值  
-        Serial1.print(" ");
+        // Serial1.print(" ");
       }
       Serial1.println();
       // #endif

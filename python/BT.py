@@ -47,3 +47,6 @@ class bluetooth:
             return UID
         else:
             return 0
+        
+    def waiting(self) -> bool:
+        return self.ser.in_waiting

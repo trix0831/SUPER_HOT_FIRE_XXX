@@ -47,10 +47,12 @@ def main():
     interf.start()
     
     # while True:
-    if interf.get_UID():
-        # print(hexTOstr(interf.get_UID()))
-        gameboard.add_UID("50335F7E")
-        hexTOstr(interf.get_UID())
+    while True:
+        if interf.ser.waiting():
+            tmp = interf.ser.SerialReadString()
+            print(tmp)
+            if tmp != "":
+                gameboard.add_UID(tmp)
 
     
     

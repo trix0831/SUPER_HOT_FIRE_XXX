@@ -8,6 +8,7 @@ import time
 import sys
 import os
 
+
 def hexTOstr(num):
     tmpStr = [0]*8
     numtmp = 0
@@ -45,8 +46,12 @@ def main():
     # # TODO : Initialize necessary variables
     interf.start()
     
-    gameboard.add_UID(hexTOstr(interf.get_UID()))
+    while True:
+        if interf.get_UID():
+            gameboard.add_UID(hexTOstr(interf.get_UID()))
 
+    
+    
     # if (sys.argv[1] == '0'):
     #     print("Mode 0: for treasure-hunting")
     #     # TODO : for treasure-hunting, which encourages you to hunt as many scores as possible

@@ -48,6 +48,7 @@ def main():
     
     # while True:
     while True:
+        
         if interf.ser.waiting():
             tmp = interf.ser.SerialReadString()
             print(tmp)

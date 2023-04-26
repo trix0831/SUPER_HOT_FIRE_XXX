@@ -16,6 +16,10 @@
 
 #define speed 250
 
+#include "RFID.h"
+
+byte testid2;
+
 
 
 void UTurn();
@@ -98,7 +102,7 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
     *lastState = 2; // not all black
     return 22221;
   }
-  else if(digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH){
+  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH) || rfid(testid2) != 0){
     if (*lastState == 2){
       (*stage)++;
       (*lastState) = 1;

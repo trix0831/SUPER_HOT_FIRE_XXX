@@ -112,7 +112,7 @@ void loop() {
   //   rfid(testid);
   // }
 
-  rfid(testid);
+  // rfid(testid);
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));

@@ -78,16 +78,16 @@ void loop() {
     Serial.println(val2);
   }
 
-  while(started == 0){
-    motorWriting(0,0);
-    if (Serial1.available()) {
-      val2 = Serial1.read();
-      Serial.println(val2);
-    }
-    if (val2 == 'w'){
-      break;
-    }
-  }
+  // while(started == 0){
+  //   motorWriting(0,0);
+  //   if (Serial1.available()) {
+  //     val2 = Serial1.read();
+  //     Serial.println(val2);
+  //   }
+  //   if (val2 == 'w'){
+  //     break;
+  //   }
+  // }
 
   started = 1;
 

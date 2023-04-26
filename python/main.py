@@ -40,13 +40,14 @@ def hexTOstr(num):
 
 def main():
     # maze = mz.Maze("python/data/small_maze.csv")
-    gameboard = Scoreboard("HOT_FIRE_XXX", "http://140.112.175.18:3000")
-    # gameboard = ScoreboardFake("HOT_FIRE_XXX", "python/data/fakeUID.csv")
     interf = BTinterface()
     # # TODO : Initialize necessary variables
     interf.start()
     
-    # while True:
+    gameboard = Scoreboard("HOT_FIRE_XXX", "http://140.112.175.18:3000")
+    # gameboard = ScoreboardFake("HOT_FIRE_XXX", "python/data/fakeUID.csv")
+    
+    
     while True:
         
         if interf.ser.waiting():
@@ -54,6 +55,7 @@ def main():
             print(tmp)
             if tmp != "":
                 gameboard.add_UID(tmp)
+                print("current score :" + str(gameboard.getCurrentScore()))
 
     
     

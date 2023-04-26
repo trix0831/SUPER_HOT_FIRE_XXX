@@ -1,4 +1,4 @@
-import maze as mz
+# import maze as mz
 from score import ScoreboardFake, Scoreboard
 from BTinterface import BTinterface
 
@@ -39,7 +39,7 @@ def hexTOstr(num):
 # print(hexTOstr(0x50335F7E))
 
 def main():
-    maze = mz.Maze("python/data/small_maze.csv")
+    # maze = mz.Maze("python/data/small_maze.csv")
     gameboard = Scoreboard("HOT_FIRE_XXX", "http://140.112.175.18:3000")
     # gameboard = ScoreboardFake("HOT_FIRE_XXX", "python/data/fakeUID.csv")
     interf = BTinterface()

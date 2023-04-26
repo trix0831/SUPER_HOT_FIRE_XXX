@@ -78,18 +78,18 @@ void loop() {
     Serial.println(val2);
   }
 
-  // while(started == 0){
-  //   motorWriting(0,0);
-  //   if (Serial1.available()) {
-  //     val2 = Serial1.read();
-  //     Serial.println(val2);
-  //   }
-  //   if (val2 == 'w'){
-  //     break;
-  //   }
-  // }
+  while(started == 0){
+    motorWriting(0,0);
+    if (Serial1.available()) {
+      val2 = Serial1.read();
+      Serial.println(val2);
+    }
+    if (val2 == 'w'){
+      break;
+    }
+  }
 
-  started = 0;
+  started = 1;
 
   // if(val2 == 'w'){
   //   motorWriting(speed, speed);
@@ -107,45 +107,46 @@ void loop() {
   //   }
   // }
 
-  Serial1.println("I'm here");
-  while (true){
-    motorWriting(0,0);
-    rfid(testid);
-  }
+  // Serial1.println("I'm here");
+  // while (true){
+  //   motorWriting(0,0);
+  //   rfid(testid);
+  // }
 
+  rfid(testid);
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));
 
   // run map
-  // if (checkState(&stage,&lastState) == 11111){
-  //   if (orders[stage] == 'f'){
-  //     Forward(&stage, &lastState);
-  //   }else if (orders[stage] == 'l'){
-  //     LeftTurn(&stage, &lastState);
-  //   }else if (orders[stage] == 'r'){
-  //     RightTurn(&stage, &lastState);
-  //   }else if (orders[stage] == 'b'){
-  //     UTurn(&stage, &lastState);
-  //   }else{
-  //     while(true){
-  //       motorWriting(0,0);
-  //     }
-  //   }
-  // }
-
-  // run cross
   if (checkState(&stage,&lastState) == 11111){
-    if (stage % 2 == 0){
-      UTurn(&stage, &lastState);
-    }else if (stage % 6 == 1){
-      RightTurn(&stage, &lastState);
-    }else if (stage % 6 == 5){
-      LeftTurn(&stage, &lastState);
-    }else{
+    if (orders[stage] == 'f'){
       Forward(&stage, &lastState);
+    }else if (orders[stage] == 'l'){
+      LeftTurn(&stage, &lastState);
+    }else if (orders[stage] == 'r'){
+      RightTurn(&stage, &lastState);
+    }else if (orders[stage] == 'b'){
+      UTurn(&stage, &lastState);
+    }else{
+      while(true){
+        motorWriting(0,0);
+      }
     }
   }
+
+  // run cross
+  // if (checkState(&stage,&lastState) == 11111){
+  //   if (stage % 2 == 0){
+  //     UTurn(&stage, &lastState);
+  //   }else if (stage % 6 == 1){
+  //     RightTurn(&stage, &lastState);
+  //   }else if (stage % 6 == 5){
+  //     LeftTurn(&stage, &lastState);
+  //   }else{
+  //     Forward(&stage, &lastState);
+  //   }
+  // }
 
 }
 

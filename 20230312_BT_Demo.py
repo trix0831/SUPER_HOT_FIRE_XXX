@@ -3,6 +3,8 @@ import time
 import sys
 import serial
 
+stage  = 0
+
 class bluetooth:
     def __init__(self, port: str, baudrate: int=9600):
         """ Initialize an BT object, and auto-connect it. """
@@ -58,7 +60,7 @@ def write():
 
 if __name__ == "__main__":
     # Please modify the port name.
-    bt = bluetooth("com5")
+    bt = bluetooth("/dev/tty.car25")
     while not bt.is_open(): pass
     print("BT Connected!")
 

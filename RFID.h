@@ -43,7 +43,7 @@ byte* rfid(byte& idSize) {
         Serial1.print(id[i], HEX);       // 以16進位顯示UID值  
         // Serial1.print(" ");
       }
-      Serial1.println();
+      Serial1.print("\n");
       // #endif
       mfrc522->PICC_HaltA();  // 讓卡片進入停止模式
       // Serial1.println(id);

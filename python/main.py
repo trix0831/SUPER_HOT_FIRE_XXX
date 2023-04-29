@@ -8,9 +8,11 @@ import time
 import sys
 import os
 
-stage = 0
+
 
 def main():
+    stage = 1
+    orders = ['f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','h','h'] #h for halt
     # maze = mz.Maze("python/data/small_maze.csv")
     interf = BTinterface()
     # # TODO : Initialize necessary variables
@@ -25,7 +27,11 @@ def main():
         if interf.ser.waiting():
             tmp = interf.ser.SerialReadString()
             print(tmp)
-            if tmp != "":
+            if (tmp == '$'): #on node
+                stage += 1
+                interf.ser.SerialWriteString(orders[stage])
+                # print(orders[stage], end = '\n')
+            elif tmp != "":
                 gameboard.add_UID(tmp)
                 print("current score :" + str(gameboard.getCurrentScore()))
 

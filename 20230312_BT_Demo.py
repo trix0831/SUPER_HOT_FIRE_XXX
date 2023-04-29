@@ -3,7 +3,7 @@ import time
 import sys
 import serial
 
-stage  = 0
+stage  = 1
 
 class bluetooth:
     def __init__(self, port: str, baudrate: int=9600):

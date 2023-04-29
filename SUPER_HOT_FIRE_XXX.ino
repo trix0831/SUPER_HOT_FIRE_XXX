@@ -26,8 +26,9 @@ int stage = 0;
 int lastState;
 int started = 0;
 int teststage = 0;
+char order = 'f';
 
-char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};
+// char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};
 
 void motorWriting(int, int);
 
@@ -119,19 +120,32 @@ void loop() {
 
   // run map
   if (checkState(&stage,&lastState) == 11111){
-    if (orders[stage] == 'f'){
+    Serial1.print('$');
+    Serial1.print('\n');
+
+    char order1;
+    while(true){
+      if (Serial1.available()){
+        order1 = Serial1.read();
+        // Serial1.print(order);
+        // Serial1.print('\n');
+        break;
+      }
+    }
+    if (order == 'f'){
       Forward(&stage, &lastState);
-    }else if (orders[stage] == 'l'){
+    }else if (order == 'l'){
       LeftTurn(&stage, &lastState);
-    }else if (orders[stage] == 'r'){
+    }else if (order == 'r'){
       RightTurn(&stage, &lastState);
-    }else if (orders[stage] == 'b'){
+    }else if (order == 'b'){
       UTurn(&stage, &lastState);
     }else{
       while(true){
         motorWriting(0,0);
       }
     }
+    order = order1;
   }
 
   // run cross

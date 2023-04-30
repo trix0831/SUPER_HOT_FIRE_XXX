@@ -17,7 +17,7 @@
 #define BIN2 6
 #define PWMB 12
 
-#define speed 240
+#define speed 250
 
 char val;
 char val2 = 'o';
@@ -114,7 +114,9 @@ void loop() {
   //   rfid(testid);
   // }
 
-  // rfid(testid);
+  if (rfid(testid) != 0){
+    UTurn(&stage, &lastState);
+  }
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));

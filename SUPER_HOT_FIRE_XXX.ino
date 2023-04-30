@@ -27,6 +27,7 @@ int lastState;
 int started = 0;
 int teststage = 0;
 char order = 'f';
+char order1;
 
 // char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};
 
@@ -123,15 +124,6 @@ void loop() {
     Serial1.print('$');
     Serial1.print('\n');
 
-    char order1;
-    while(true){
-      if (Serial1.available()){
-        order1 = Serial1.read();
-        // Serial1.print(order);
-        // Serial1.print('\n');
-        break;
-      }
-    }
     if (order == 'f'){
       Forward(&stage, &lastState);
     }else if (order == 'l'){
@@ -143,6 +135,15 @@ void loop() {
     }else{
       while(true){
         motorWriting(0,0);
+      }
+    }
+
+    while(true){
+      if (Serial1.available()){
+        order1 = Serial1.read();
+        // Serial1.print(order);
+        // Serial1.print('\n');
+        break;
       }
     }
     order = order1;

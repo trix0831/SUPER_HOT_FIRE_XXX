@@ -109,18 +109,11 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
     (*stage)++;
     return 11111;    
   }
-  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH)){
+  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH) || rfid(testid2) != 0){
     if (*lastState == 2){
       (*stage)++;
       (*lastState) = 1;
     }
-    return 11111;
-    
-  }
-  else if(rfid(testid2) != 0){
-    (*stage)++;
-    (*lastState) = 1;
-
     return 11111;
     
   }

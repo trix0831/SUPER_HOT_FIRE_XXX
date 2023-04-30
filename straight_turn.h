@@ -14,7 +14,7 @@
 #define IR4 38
 #define IR5 40
 
-#define speed 250
+#define speed 240
 
 #include "RFID.h"
 
@@ -31,7 +31,7 @@ void motorWriting(int, int);
 
 void UTurn(int *stage, int *lastState){
   motorWriting(speed, -speed);
-  delay(620);
+  delay(700);
   motorWriting(speed,speed);
   delay(100);
   // motorWriting(speed, speed);
@@ -101,12 +101,26 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == HIGH){
     *lastState = 2; // not all black
     return 22221;
+  }else if (rfid(testid2) != 0){
+    // if (*lastState == 2){
+    //   (*stage)++;
+    //   (*lastState) = 1;
+    // }
+    (*stage)++;
+    return 11111;    
   }
-  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH) || rfid(testid2) != 0){
+  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH)){
     if (*lastState == 2){
       (*stage)++;
       (*lastState) = 1;
     }
+    return 11111;
+    
+  }
+  else if(rfid(testid2) != 0){
+    (*stage)++;
+    (*lastState) = 1;
+
     return 11111;
     
   }

@@ -26,7 +26,7 @@ int stage = 0;
 int lastState;
 int started = 0;
 int teststage = 0;
-char order = 'r';
+char order = 'l';
 char order1;
 
 // char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};

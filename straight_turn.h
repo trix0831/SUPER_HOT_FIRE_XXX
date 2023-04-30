@@ -31,7 +31,7 @@ void motorWriting(int, int);
 
 void UTurn(int *stage, int *lastState){
   motorWriting(speed, -speed);
-  delay(650);
+  delay(660);
   motorWriting(speed,speed);
   delay(100);
   // motorWriting(lspeed, speed);
@@ -43,18 +43,18 @@ void UTurn(int *stage, int *lastState){
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(40);
+  delay(60);
   motorWriting(speed, 0);
-  delay(650);
+  delay(680);
   // motorWriting(lspeed, speed);
   // delay(120);
 }
 
 void LeftTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(40);
+  delay(60);
   motorWriting(0, speed);
-  delay(650);
+  delay(680);
   // motorWriting(lspeed, speed);
   // delay(120);
 }
@@ -63,7 +63,7 @@ void Forward(int *stage, int *lastState){
   // while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
   //   motorWriting(lspeed, speed);
   // }
-  motorWriting(speed, speed);
+  motorWriting(190, speed);
   delay(500);
 }
 

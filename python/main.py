@@ -12,16 +12,14 @@ import os
 
 def main():
     stage = 1
-    # orders = ['f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','h','h'] #h for halt
-    # orders = ['f', 'l', 'r', 'r', 'b', 'f', 'f', 'l', 'h', 'h'] #h for halt
-    orders = ['f', 'r', 'f', 'b', 'l', 'l', 'h'] #h for halt
+    orders = ['f','r','f','b','l','l','h','h'] #h for halt
     # maze = mz.Maze("python/data/small_maze.csv")
     interf = BTinterface()
     # # TODO : Initialize necessary variables
     interf.start()
     
     # gameboard = Scoreboard("HOT_FIRE_XXX", "http://140.112.175.18:3000")
-    gameboard = ScoreboardFake("HOT_FIRE_XXX", "python/data/fakeUID.csv")
+    gameboard = ScoreboardFake("HOT_FIRE_XXX", "data/fakeUID.csv")
     
     
     while True:

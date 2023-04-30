@@ -17,7 +17,7 @@
 #define BIN2 6
 #define PWMB 12
 
-#define speed 250
+#define speed 240
 
 char val;
 char val2 = 'o';

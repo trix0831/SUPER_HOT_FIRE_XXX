@@ -102,11 +102,22 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
     *lastState = 2; // not all black
     return 22221;
   }
-  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH) || rfid(testid2) != 0){
+  else if((digitalRead(IR1) == HIGH && digitalRead(IR2) == HIGH && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == HIGH)){
     if (*lastState == 2){
       (*stage)++;
       (*lastState) = 1;
     }
+    return 11111;
+    
+  }
+  else if(rfid(testid2) != 0){
+    if (*lastState == 2){
+      (*stage)++;
+      (*lastState) = 1;
+    // Serial1.print("rfid turn");
+    }
+
+
     return 11111;
     
   }

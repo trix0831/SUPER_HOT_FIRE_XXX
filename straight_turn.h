@@ -63,7 +63,7 @@ void Forward(int *stage, int *lastState){
   // while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
   //   motorWriting(lspeed, speed);
   // }
-  motorWriting(190, speed);
+  motorWriting(200, speed);
   delay(500);
 }
 
@@ -94,9 +94,10 @@ int checkState(int* stage, int* lastState){ //checking the states of IR, 1 means
     *lastState = 2; // not all black
     return 21122;
   }
-  else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == HIGH && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW){
+  else if((digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == HIGH && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW)){
     *lastState = 2; // not all black
     return 22122;
+    //  || (digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == LOW && digitalRead(IR4) == LOW && digitalRead(IR5) == LOW)
   }
   else if(digitalRead(IR1) == LOW && digitalRead(IR2) == LOW && digitalRead(IR3) == HIGH && digitalRead(IR4) == HIGH && digitalRead(IR5) == LOW){
     *lastState = 2; // not all black

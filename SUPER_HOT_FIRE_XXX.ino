@@ -118,10 +118,7 @@ void loop() {
   // }
 
   if (rfid(testid) != 0){
-    if (rfidcnt != 0){
       UTurn(&stage, &lastState);
-    }
-    rfidcnt = 1;
   }
 
   straight(&stage, &lastState);

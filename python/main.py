@@ -13,9 +13,9 @@ import os
 def main():
     stage = 1
     # orders = ['f', 'r','r', 'l', 'r', 'r', 'f', 'f', 'h', 'h'] #h for halt
-    orders = ['f', 'l', 'l', 'f', 'f', 'l', 'l', 'f', 'r', 'f', 'l', 'f', 'r', 'l', 'r', 'f', 'f', 'f', 'f', 'l', 'r', 'r', 'f', 'r', 'l', 'r', 'f', 'l', 'f', 'f', 'r', 'f', 'r', 'r', 'l', 'l', 'r', 'r', 'f', 'r', 'r', 'l', 'r', 'r', 'f', 'l']
+    orders = ['f', 'l', 'l', 'f', 'f', 'l', 'l', 'f', 'r',  'f'  ,'l', 'f', 'r', 'l', 'r', 'f', 'f', 'f', 'f', 'l', 'r', 'r', 'f', 'r', 'l', 'r', 'f', 'l', 'f', 'f', 'r', 'f', 'r', 'r', 'l', 'l', 'r', 'r', 'f', 'r', 'r', 'l', 'r', 'r', 'f', 'l', 'h', 'h']
     # maze = mz.Maze("python/data/small_maze.csv")
-    # orders = ['f', 'r', 'f', 'f', 'f', 'f', 'f', 'l', 'l', 'h', 'h']
+    # orders = ['f', 'r', 'f', 'f', 'f', 'f', 'f', 'l', 'l', 'r', 'l','l', 'h', 'h']
     interf = BTinterface()
     # # TODO : Initialize necessary variables
     interf.start()

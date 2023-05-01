@@ -28,6 +28,8 @@ int started = 0;
 int teststage = 0;
 char order = 'l';
 char order1;
+int rfidcnt = 0;
+int blacknode;
 
 // char orders[maxn]={'f','f','l','f','b','f','r','r','l','r','b','l','l','f','r','b','f','s'};
 
@@ -87,6 +89,7 @@ void loop() {
       Serial.println(val2);
     }
     if (val2 == 's'){
+      delay(5000);
       started = 1;
       break;
     }
@@ -115,14 +118,18 @@ void loop() {
   // }
 
   if (rfid(testid) != 0){
-    UTurn(&stage, &lastState);
+    if (rfidcnt != 0){
+      UTurn(&stage, &lastState);
+    }
+    rfidcnt = 1;
   }
 
   straight(&stage, &lastState);
   // Serial1.println(checkState(&stage, &lastState));
 
   // run map
-  if (checkState(&stage,&lastState) == 11111){
+  blacknode = checkState(&stage,&lastState);
+  if (blacknode == 11111){
     Serial1.print('$');
     Serial1.print('\n');
 

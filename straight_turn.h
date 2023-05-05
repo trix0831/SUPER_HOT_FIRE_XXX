@@ -43,7 +43,7 @@ void UTurn(int *stage, int *lastState){
 
 void RightTurn(int *stage, int *lastState){
   motorWriting(speed, speed);
-  delay(60);
+  delay(80);
   motorWriting(speed, 0);
   delay(680);
   // motorWriting(lspeed, speed);
@@ -63,7 +63,7 @@ void Forward(int *stage, int *lastState){
   // while (checkState(stage, lastState) == 11111){//1 is black, 2 is white
   //   motorWriting(lspeed, speed);
   // }
-  motorWriting(200, speed);
+  motorWriting(190, speed);
   delay(500);
 }
 
